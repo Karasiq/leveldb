@@ -48,6 +48,8 @@ class DBImpl : public DB {
   bool GetProperty(const Slice& property, std::string* value) override;
   void GetApproximateSizes(const Range* range, int n, uint64_t* sizes) override;
   void CompactRange(const Slice* begin, const Slice* end) override;
+  void SuspendCompactions() override;
+  void ResumeCompactions() override;
 
   // Extra methods (for testing) that are not in the public DB interface
 
@@ -169,6 +171,13 @@ class DBImpl : public DB {
 
   // Lock over the persistent DB state.  Non-null iff successfully acquired.
   FileLock* db_lock_;
+
+  port::Mutex suspend_mutex;
+  port::CondVar suspend_cv;
+  int suspend_count;
+  bool suspended;
+  static void SuspendWork(void* db);
+  void SuspendCallback();
 
   // State below is protected by mutex_
   port::Mutex mutex_;

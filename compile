@@ -1,0 +1,5 @@
+rm -rf build && mkdir -p build && cd build
+export LDFLAGS='-flat_namespace -force_flat_namespace'
+export CXXFLAGS='-frtti -fexceptions'
+cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_RTTI=true -DLLVM_ENABLE_EH=true .. && cmake --build .
+mv libleveldb.a ../

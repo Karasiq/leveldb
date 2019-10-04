@@ -85,8 +85,6 @@ class LEVELDB_EXPORT Slice {
   bool starts_with(const Slice& x) const {
     return ((size_ >= x.size_) && (memcmp(data_, x.data_, x.size_) == 0));
   }
-
- private:
   const char* data_;
   size_t size_;
 };

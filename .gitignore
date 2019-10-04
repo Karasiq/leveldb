@@ -2,7 +2,10 @@
 *.sw*
 .vscode
 .DS_Store
+.idea
+*.iml
 
 # Build directory.
 build/
 out/
+*.a
