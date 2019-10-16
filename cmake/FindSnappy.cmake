@@ -4,12 +4,12 @@
 
 find_library(SNAPPY_LIBRARY
     NAMES snappy
-    HINTS ${SNAPPY_ROOT_DIR}/lib
+    HINTS ${SNAPPY_HOME}/build
 )
 
 find_path(SNAPPY_INCLUDE_DIR
     NAMES snappy.h
-    HINTS ${SNAPPY_ROOT_DIR}/include
+    HINTS ${SNAPPY_HOME}
 )
 
 include(FindPackageHandleStandardArgs)
