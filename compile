@@ -1,5 +1,4 @@
 rm -rf build && mkdir -p build && cd build
-export LDFLAGS='-fPIC'
-export CXXFLAGS='-frtti -fexceptions'
+export CXXFLAGS='-frtti -fexceptions -fPIC'
 cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
-mv libleveldb.a ../
+cp libleveldb.a ../

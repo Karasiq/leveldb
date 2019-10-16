@@ -9,7 +9,7 @@ find_library(SNAPPY_LIBRARY
 
 find_path(SNAPPY_INCLUDE_DIR
     NAMES snappy.h
-    HINTS ${SNAPPY_HOME}
+    HINTS ${SNAPPY_HOME}/build
 )
 
 include(FindPackageHandleStandardArgs)
