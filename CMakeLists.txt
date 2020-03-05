@@ -103,6 +103,12 @@ if(BUILD_SHARED_LIBS)
 endif(BUILD_SHARED_LIBS)
 
 add_library(leveldb "")
+
+if(WIN32 AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    set(CMAKE_EXE_LINKER_FLAGS " -static")
+    target_link_libraries(leveldb -static -static-libgcc -static-libstdc++)
+endif()
+
 target_sources(leveldb
   PRIVATE
     "${PROJECT_BINARY_DIR}/${LEVELDB_PORT_CONFIG_DIR}/port_config.h"
